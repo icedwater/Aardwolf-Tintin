@@ -1,0 +1,43 @@
+#nop {Avoid clashes with other commands.}
+#alias {ws} {w;s}
+#alias {ww} {w;w}
+#alias {wn} {w;n}
+#alias {we} {w;e}
+#alias {ew} {e;w}
+#alias {ee} {e;e}
+#alias {es} {e;s}
+#alias {en} {e;n}
+#alias {ns} {n;s}
+#alias {nn} {n;n}
+#alias {ne} {n;e}
+#alias {nw} {n;w}
+
+#alias {ss} {shoot south}
+#alias {se} {shoot east}
+#alias {sw} {shoot west}
+#alias {sn} {shoot north}
+
+#nop {
+#unvar target
+
+#macro {\eOQ} {scan}
+#action {^Assigning you to the (%1) lasertag team.$} {#var team %1}
+#action {^     - (%s%6%sTeam%s) %1$}
+{
+	#showme %6;
+	#if {"%6" == "$team"}
+		{#showme <128>%1 is in your team!<088>}
+		{#showme <128>Aiming at %1.<088>;#var target %2};
+} {1}
+
+#macro {\e[A} {n}
+#macro {\e[B} {s}
+#macro {\e[C} {e}
+#macro {\e[D} {w}
+
+#macro {\e[1;5A} {shoot north ${target}}
+#macro {\e[1;5B} {shoot south ${target}}
+#macro {\e[1;5C} {shoot east ${target}}
+#macro {\e[1;5D} {shoot west ${target}}
+
+}
